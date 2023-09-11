@@ -1,3 +1,11 @@
+cupom = {'Nomeestabelecimento':'Jota', 'duração(dias)': '15', 'data_inicio': '11/09/2023', 'valor(%)': '15',
+         'descricao': 'Cupom de desconto de 15% em qualquer produto da loja'}
+estabelecimento = {'estabelecimento': 'Jota', 'cnpj': '123456789', 'email': 'jota@gmail.com', 'TipodeEstabelecimento': 'Restaurante'}
+reviews = {'usuario': 'biafarah123', 'estabelecimento': 'Jota', 'review': 'Gostei mt do restaurante'}
+usuario = {'usuario': 'biafarah123', 'email': 'biaafarah@gmail.com', 'senha': '1234', 'cpf': '12345645678901'}
+post = {'usuário': 'biafarah123', 'post': 'Esse é meu primeiro post'}
+nota = {'estabelecimento': 'Jota', 'TipodeEstabelecimento': 'Restaurante', 'nota': '10'}
+
 'Menu Estabelecimento'
 def CadastrarCupom():
     return 1
@@ -7,6 +15,8 @@ def VerReviwsEstabelecimento():
 
 def FazerPostEstabelecimento():
     return 3
+
+
 
 'Menu usuários'
 def FazerNovaReview():
