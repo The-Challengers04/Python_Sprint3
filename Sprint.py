@@ -1,6 +1,6 @@
 cupom = {'Nomeestabelecimento':'Jota', 'duração(dias)': '15', 'data_inicio': '11/09/2023', 'valor(%)': '15',
          'descricao': 'Cupom de desconto de 15% em qualquer produto da loja'}
-estabelecimento = {'estabelecimento': 'Jota', 'cnpj': '123456789', 'email': 'jota@gmail.com', 'TipodeEstabelecimento': 'Restaurante'}
+estabelecimento = {'email':'oiii', 'estabelecimento': 'Jota', 'cnpj': '123456789', 'TipodeEstabelecimento': 'Restaurante', 'senha': '1234'}
 reviews = {'usuario': 'biafarah123', 'estabelecimento': 'Jota', 'review': 'Gostei mt do restaurante'}
 usuario = {'usuario': 'biafarah123', 'email': 'biaafarah@gmail.com', 'senha': '1234', 'cpf': '12345645678901'}
 post = {'usuário': 'biafarah123', 'post': 'Esse é meu primeiro post'}
@@ -37,8 +37,25 @@ def DarNota():
 
 'Def MENU'
 
-def CadastraEstabelecimento():
-    return 1
+def CadastraEstabelecimento(estabelecimento):
+    emailEstabelecimento = input('Cadastre seu email')
+    if emailEstabelecimento in estabelecimento:
+        print('Você já está cadastrado')
+    else:
+        nomeEstabelecimento = input('Qual é o nome do seu estabelecimento?')
+        senhaEstabelecimento = input('Cadastre sua senha')
+        cnpj = input('Cadastre seu cnpj')
+        tipoEstabelecimento = input('Tipo de estabelecimento')
+        print('Cadastro realizado com sucesso')
+        estabelecimento[emailEstabelecimento] = {
+            'estabelecimento': nomeEstabelecimento,
+            'cnpj': cnpj,
+            'TipodeEstabelecimento': tipoEstabelecimento,
+            'senha': senhaEstabelecimento
+        }
+        print(estabelecimento)
+        
+    
 
 def CadastraUsuario():
     return 2
@@ -63,7 +80,7 @@ def LoginUsuario():
 menu = int(input())
 match menu:
     case 1: 
-        CadastraEstabelecimento()
+        CadastraEstabelecimento(estabelecimento)
     case 2:
         CadastraUsuario()
     case 3:
