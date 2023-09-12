@@ -1,0 +1,32 @@
+menu - mach case OK
+opções - função CadastraEstabelecimento OK* , CadastraUsuario OK* , LoginEstabelecimento, LoginUsuário 
+
+*Guardar cadastro em um dicionario
+
+Depois do loginUsuario: Opções (mach case):
+
+
+-Fazer review OK
+- Ver reviews
+
+*guardar as reviews em um dicionário OK
+
+-Fazer um post OK
+-Ver seus posts
+
+*guardar os posts em um dicionário 
+
+-dar uma nota aos estabelecimentos 
+
+
+Depois do loginEstabelecimento:
+
+- Cadastrar um novo cupom OK 
+- Ver posts da comunidade sobre seu estabelecimento (!não sei como fazer isso)
+
+Faltando:
+Logins
+ver reviews
+ver seus posts
+dar uma nota
+ver postst (estabeleci)
