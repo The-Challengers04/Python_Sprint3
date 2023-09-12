@@ -1,3 +1,4 @@
+lista = []
 cupom = {'Nomeestabelecimento':'Jota', 'duração(dias)': '15', 'data_inicio': '11/09/2023', 'valor(%)': '15',
          'descricao': 'Cupom de desconto de 15% em qualquer produto da loja'}
 estabelecimento = {'email':'oiii', 'estabelecimento': 'Jota', 'cnpj': '123456789', 'TipodeEstabelecimento': 'Restaurante', 'senha': '1234'}
@@ -16,11 +17,10 @@ def VerReviwsEstabelecimento():
 def FazerPostEstabelecimento():
     return 3
 
-
-
 'Menu usuários'
 def FazerNovaReview():
     return 1
+1
 
 def VerReviewsUsuario():
     return 2
@@ -34,56 +34,60 @@ def VerPostsUsuario():
 def DarNota():
     return 5
 
-
 'Def MENU'
-
-def CadastraEstabelecimento(estabelecimento):
-    emailEstabelecimento = input('Cadastre seu email')
-    if emailEstabelecimento in estabelecimento:
-        print('Você já está cadastrado')
-    else:
-        nomeEstabelecimento = input('Qual é o nome do seu estabelecimento?')
-        senhaEstabelecimento = input('Cadastre sua senha')
-        cnpj = input('Cadastre seu cnpj')
-        tipoEstabelecimento = input('Tipo de estabelecimento')
-        print('Cadastro realizado com sucesso')
-        estabelecimento[emailEstabelecimento] = {
-            'estabelecimento': nomeEstabelecimento,
-            'cnpj': cnpj,
-            'TipodeEstabelecimento': tipoEstabelecimento,
-            'senha': senhaEstabelecimento
-        }
-        print(estabelecimento)
-        
-    
+def CadastraEstabelecimento(lista):
+    while True:
+        emailEstabelecimento = input('Cadastre seu email: ')
+        if any(user['email'] == emailEstabelecimento for user in lista):
+            print('Email já cadastrado')
+        else:
+            nomeEstabelecimento = input('Qual é o nome do seu estabelecimento? ')
+            senhaEstabelecimento = input('Cadastre sua senha: ')
+            cnpj = input('Cadastre seu cnpj: ')
+            tipoEstabelecimento = input('Tipo de estabelecimento: ')
+            
+            usuario = {'email': emailEstabelecimento,
+                       'estabelecimento': nomeEstabelecimento,
+                       'cnpj': cnpj,
+                       'TipodeEstabelecimento': tipoEstabelecimento,
+                       'senha': senhaEstabelecimento}
+            
+            lista.append(usuario)
+            print('Cadastro realizado com sucesso')
+            print(lista)
+            break
 
 def CadastraUsuario():
-    return 2
-
+    return 3
 
 def LoginEstabelecimento():
     menuEstabelecimento = int(input())
-    match menuEstabelecimento:
-        case 1: CadastrarCupom()
-        case 2: VerReviwsEstabelecimento()
-        case 3: FazerPostEstabelecimento()
+    if menuEstabelecimento == 1:
+        CadastrarCupom()
+    elif menuEstabelecimento == 2:
+        VerReviwsEstabelecimento()
+    elif menuEstabelecimento == 3:
+        FazerPostEstabelecimento()
 
 def LoginUsuario():
     menuUsuario = int(input())
-    match menuUsuario:
-        case 1: FazerNovaReview()
-        case 2: VerReviewsUsuario()
-        case 3: FazerPostUsuario()
-        case 4: VerPostsUsuario()
-        case 5: DarNota()
+    if menuUsuario == 1:
+        FazerNovaReview()
+    elif menuUsuario == 2:
+        VerReviewsUsuario()
+    elif menuUsuario == 3:
+        FazerPostUsuario()
+    elif menuUsuario == 4:
+        VerPostsUsuario()
+    elif menuUsuario == 5:
+        DarNota()
 
-menu = int(input())
-match menu:
-    case 1: 
-        CadastraEstabelecimento(estabelecimento)
-    case 2:
-        CadastraUsuario()
-    case 3:
-        LoginEstabelecimento()
-    case 4:
-        LoginUsuario()
+menu = int(input('Escolha uma opção (1 para cadastrar estabelecimento, 2 para cadastrar usuário, 3 para login estabelecimento, 4 para login usuário): '))
+if menu == 1:
+    CadastraEstabelecimento(lista)
+elif menu == 2:
+    CadastraUsuario()
+elif menu == 3:
+    LoginEstabelecimento()
+elif menu == 4:
+    LoginUsuario()
