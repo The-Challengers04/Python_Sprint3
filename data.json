@@ -1,0 +1,68 @@
+{
+    "listaEstabelecimentos": [
+        {
+            "email": "exemplomail",
+            "estabelecimento": "Jota",
+            "cnpj": 123456789,
+            "TipodeEstabelecimento": "Restaurante",
+            "senha": "1234"
+        },
+        {
+            "email": "anothermail",
+            "estabelecimento": "sjhd",
+            "cnpj": 3627328032,
+            "TipodeEstabelecimento": "Cinema",
+            "senha": "gsdys"
+        },
+        {
+            "email": "mailmail",
+            "estabelecimento": "yeah",
+            "cnpj": 387283784,
+            "TipodeEstabelecimento": "Parque",
+            "senha": "idk123"
+        }
+    ],
+    "listaUsuarios": [
+        {
+            "usuario": "biafarah123",
+            "email": "biaafarah@gmail.com",
+            "senha": "1234",
+            "cpf": "12345645678901"
+        }
+    ],
+    "listaPostsUsuario": [
+        {
+            "usu\u00e1rio": "biafarah123",
+            "post": "Esse \u00e9 meu primeiro post"
+        }
+    ],
+    "listaPostsEstabelecimento": [
+        {
+            "usu\u00e1rio": "biafarah123",
+            "post": "Esse \u00e9 meu primeiro post"
+        }
+    ],
+    "listaReviews": [
+        {
+            "usuario": "biafarah123",
+            "estabelecimento": "Jota",
+            "review": "Gostei mt do restaurante"
+        }
+    ],
+    "listaCupons": [
+        {
+            "Nomeestabelecimento": "Jota",
+            "dura\u00e7\u00e3o(dias)": "15",
+            "data_inicio": "11/09/2023",
+            "valor(%)": "15",
+            "descricao": "Cupom de desconto de 15% em qualquer produto da loja"
+        }
+    ],
+    "listaNotas": [
+        {
+            "estabelecimento": "Jota",
+            "TipodeEstabelecimento": "Restaurante",
+            "nota": "10"
+        }
+    ]
+}

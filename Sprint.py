@@ -1,11 +1,20 @@
-listaEstabelecimentos = [{'email':'oiii', 'estabelecimento': 'Jota', 'cnpj': '123456789', 'TipodeEstabelecimento': 'Restaurante', 'senha': '1234'}]
-listaUsuarios = [{'usuario': 'biafarah123', 'email': 'biaafarah@gmail.com', 'senha': '1234', 'cpf': '12345645678901'}]
-listaPostsUsuario = [{'usuário': 'biafarah123', 'post': 'Esse é meu primeiro post'}]
-listaPostsEstabelecimento = [{'usuário': 'biafarah123', 'post': 'Esse é meu primeiro post'}]
-listaReviews = [{'usuario': 'biafarah123', 'estabelecimento': 'Jota', 'review': 'Gostei mt do restaurante'}]
-listaCupons = [{'Nomeestabelecimento':'Jota', 'duração(dias)': '15', 'data_inicio': '11/09/2023', 'valor(%)': '15',
-         'descricao': 'Cupom de desconto de 15% em qualquer produto da loja'}]
-listaNotas = [{'estabelecimento': 'Jota', 'TipodeEstabelecimento': 'Restaurante', 'nota': '10'}]
+import json
+
+# Dicionário para armazenar várias listas
+data = {}
+
+# Para recuperar os dados do arquivo JSON
+with open('data.json', 'r') as json_file:
+    data = json.load(json_file)
+
+# Agora você pode acessar cada lista individualmente
+listaEstabelecimentos = data['listaEstabelecimentos']
+listaUsuarios = data['listaUsuarios']
+listaPostsUsuario = data['listaPostsUsuario']
+listaPostsEstabelecimento = data['listaPostsEstabelecimento']
+listaReviews = data['listaReviews']
+listaCupons = data['listaCupons']
+listaNotas = data['listaNotas']
 
 
 'Menu Estabelecimento'
@@ -91,7 +100,9 @@ def FazerNovaReview():
             print('Review já cadastrada')
         else:
             review = input('Escreva sua review: ')
-            reviewUsuario = {'usuario': 'biafarah123',
+            usuario = ()
+            usuario = obterUsuario(emailusuario)
+            reviewUsuario = {'usuario': usuario,
                     'estabelecimento': nomeEstabelecimentoReview,
                     'review': review}
             
@@ -105,6 +116,7 @@ def VerReviewsUsuario():
     for review in listaReviews:
         if review['usuario'] == login_usuario:
             reviews_usuario.append(review)
+    print(reviews_usuario)
 
     if not reviews_usuario:
         print('Nenhuma review encontrada para este estabelecimento.')
@@ -122,7 +134,9 @@ def FazerPostUsuario(listaPostsUsuario):
         if any(user['post'] == postUsuario for user in listaPostsUsuario):
             print('Post já cadastrado')
         else:
-            postUsuario = {'usuário': 'biafarah123',
+            usuario = ()
+            usuario = obterUsuario(emailusuario)
+            postUsuario = {'usuário': usuario,
                     'post': postUsuario}
             
             listaPostsUsuario.append(postUsuario)
@@ -149,15 +163,20 @@ def VerPostsUsuario(listaPostsUsuario):
 def DarNota(listaNotas):
     while True:
         nomeEstabelecimentoNota = input('Qual é o nome do estabelecimento que você deseja dar nota? ')
-        notaEstabelecimento = input('Qual é a nota que você deseja dar? ')
-        TipoEstabelecimento = input('Qual é o tipo do estabelecimento? ')
+        notaEstabelecimento = int(input(f'Digite uma nota (de 0 a 5) para a acessibilidade dentro do estabelecimento {nomeEstabelecimentoNota}: '))  # Solicita uma nota de acessibilidade ao estabelecimento
+        if notaEstabelecimento <= 5:
+            TipoEstabelecimento = input('Qual é o tipo do estabelecimento? ')
 
-        Notas = {'TipodeEstabelecimento': TipoEstabelecimento,
-                'estabelecimento': nomeEstabelecimentoNota,
-                'nota': notaEstabelecimento}
-        listaNotas.append(Notas)
-        print('Nota cadastrada com sucesso')
-        break
+            Notas = {'TipodeEstabelecimento': TipoEstabelecimento,
+                    'estabelecimento': nomeEstabelecimentoNota,
+                    'nota': notaEstabelecimento}
+            listaNotas.append(Notas)
+            print('Nota cadastrada com sucesso')
+            break
+
+        else:
+            print('Digite um valor válido!')
+            break
 
 'Def MENU'
 def CadastraEstabelecimento(listaEstabeelecimentos):
@@ -168,7 +187,7 @@ def CadastraEstabelecimento(listaEstabeelecimentos):
         else:
             nomeEstabelecimento = input('Qual é o nome do seu estabelecimento? ')
             senhaEstabelecimento = input('Cadastre sua senha: ')
-            cnpj = input('Cadastre seu cnpj: ')
+            cnpj = int(input('Cadastre seu cnpj (Digite apenas números): '))
             tipoEstabelecimento = input('Tipo de estabelecimento: ')
             
             usuario = {'email': emailEstabelecimento,
@@ -180,6 +199,10 @@ def CadastraEstabelecimento(listaEstabeelecimentos):
             listaEstabeelecimentos.append(usuario)
             print('Cadastro realizado com sucesso')
             print(listaEstabeelecimentos)
+
+            with open('data.json', 'w') as json_file:
+                json.dump(data, json_file, indent=4)
+
             break
 
 def CadastraUsuario(listausuarios):
@@ -198,10 +221,15 @@ def CadastraUsuario(listausuarios):
                             'cpf': cpfusuario}
                 
                 listausuarios.append(usuario)
+
+                with open('data.json', 'w') as json_file:
+                    json.dump(data, json_file, indent=4)
+
                 print('Cadastro realizado com sucesso')
                 break
 
 def LoginEstabelecimento(*args):
+    global emailestabelecimento
     emailestabelecimento = input('Bem vindo de volta a Inclui+! Qual é seu email? ')
     if any(user['email'] == emailestabelecimento for user in listaEstabelecimentos):
         senhaEstabelecimento = input('Qual é sua senha?: ')
@@ -216,6 +244,7 @@ def LoginEstabelecimento(*args):
         CadastraEstabelecimento(listaEstabelecimentos)
 
 def LoginUsuario(listaUsuarios):
+    global emailusuario
     emailusuario = input('Bem vindo de volta a Inclui+! Qual é seu email? ')
     if any(user['email'] == emailusuario for user in listaUsuarios):
         senhaUsuario = input('Qual é sua senha?: ')
@@ -229,15 +258,30 @@ def LoginUsuario(listaUsuarios):
         print('Email não cadastrado')
         CadastraUsuario(listaUsuarios)
 
+def obterUsuario(emailusuario):
+    for usuario in listaUsuarios:
+        if usuario["email"] == emailusuario:
+            return usuario["usuario"]
+
+def obterEstabelecimento(emailestabelecimento):
+    for estabelecimento in listaUsuarios:
+        if estabelecimento["email"] == emailestabelecimento:
+            return estabelecimento["estabelecimento"]
 
 
-menu = int(input('Seja bem vindo ao Inclui+! \n Escolha uma opção: \n 1 - cadastrar estabelecimento \n 2 - cadastrar usuário \n 3 - login estabelecimento \n 4 - login usuário: '))
-if menu == 1:
-    CadastraEstabelecimento(listaEstabelecimentos)
-elif menu == 2:
-    CadastraUsuario(listaUsuarios)
-elif menu == 3:
-    LoginEstabelecimento()
-elif menu == 4:
-    LoginUsuario(listaUsuarios)
 
+try:
+    menu = int(input('Seja bem vindo ao Inclui+! \n Escolha uma opção: \n 1 - Cadastrar estabelecimento \n 2 - Cadastrar usuário \n 3 - Login estabelecimento \n 4 - Login usuário \n'))
+    match menu:
+        case 1: 
+            CadastraEstabelecimento(listaEstabelecimentos)
+        case 2: 
+            CadastraUsuario(listaUsuarios)
+        case 3: 
+            LoginEstabelecimento()
+        case 4:
+            LoginUsuario(listaUsuarios)
+        case other: 
+            print('Opção inválida')  
+except ValueError:
+    print('Opção inválida')  
