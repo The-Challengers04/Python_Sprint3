@@ -20,6 +20,13 @@
             "cnpj": 387283784,
             "TipodeEstabelecimento": "Parque",
             "senha": "idk123"
+        },
+        {
+            "email": "bk@bk.com",
+            "estabelecimento": "burguer king",
+            "cnpj": 19287751991,
+            "TipodeEstabelecimento": "Fast Food",
+            "senha": "bk123"
         }
     ],
     "listaUsuarios": [
@@ -28,12 +35,22 @@
             "email": "biaafarah@gmail.com",
             "senha": "1234",
             "cpf": "12345645678901"
+        },
+        {
+            "usuario": "uu",
+            "email": "u@u",
+            "senha": "u",
+            "cpf": "566237729"
         }
     ],
     "listaPostsUsuario": [
         {
             "usu\u00e1rio": "biafarah123",
             "post": "Esse \u00e9 meu primeiro post"
+        },
+        {
+            "usu\u00e1rio": "uu",
+            "post": "Uau"
         }
     ],
     "listaPostsEstabelecimento": [
@@ -47,6 +64,11 @@
             "usuario": "biafarah123",
             "estabelecimento": "Jota",
             "review": "Gostei mt do restaurante"
+        },
+        {
+            "usuario": "uu",
+            "estabelecimento": "Burguer King",
+            "review": "Incr\u00edvel"
         }
     ],
     "listaCupons": [
@@ -56,6 +78,13 @@
             "data_inicio": "11/09/2023",
             "valor(%)": "15",
             "descricao": "Cupom de desconto de 15% em qualquer produto da loja"
+        },
+        {
+            "Nomeestabelecimento": "J\u00f5rg",
+            "dura\u00e7\u00e3o(dias)": "12 dias",
+            "data_inicio": "15/09/2023",
+            "valor(%)": "10",
+            "descricao": "\u00f3timo"
         }
     ],
     "listaNotas": [
@@ -63,6 +92,11 @@
             "estabelecimento": "Jota",
             "TipodeEstabelecimento": "Restaurante",
             "nota": "10"
+        },
+        {
+            "TipodeEstabelecimento": "Fast Food",
+            "estabelecimento": "Burguer king",
+            "nota": 5
         }
     ]
 }
