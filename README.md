@@ -1,7 +1,7 @@
 # Python_Sprint3
 # Computational Thinking with Python
 
-> # Challenge - Sprint 1
+> # Challenge - Sprint 3
 <ul>
 <li> Gabriel Machado Belardino - RM550121</li>
 <li> Ana Beatriz Farah Alvez - RM97865 </li>
